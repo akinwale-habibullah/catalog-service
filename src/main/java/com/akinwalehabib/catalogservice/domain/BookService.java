@@ -36,11 +36,17 @@ public class BookService {
   public Book editBookDetails(String isbn, Book book) {
     Optional<Book> existingBook = bookRepository.findByIsbn(isbn);
     if (existingBook.isPresent()) {
-      return new Book(
+      var bookToUpdate = new Book(
+          existingBook.get().id(),
+          existingBook.get().createdDate(),
+          existingBook.get().lastModifiedDate(),
           existingBook.get().isbn(),
           book.title(),
           book.author(),
-          book.price());
+          book.price(),
+          existingBook.get().version()
+      );
+      return bookRepository.save(bookToUpdate);
     }
 
     return addBookToCatalog(book);
