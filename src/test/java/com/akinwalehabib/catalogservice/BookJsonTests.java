@@ -18,7 +18,7 @@ public class BookJsonTests {
 
   @Test
   void testSerialize() throws Exception {
-    Book book = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90);
+    Book book = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90, "publisher");
     //new Book("1234567890", "Book Title", "Book Author", 9.90);
     var jsonContent = json.write(book);
     
@@ -35,14 +35,13 @@ public class BookJsonTests {
         "isbn":"1234567890",
         "title":"Book Title\",
         "author": "Book Author",
-        "price": 9.90
+        "price": 9.90,
+        "publisher": "publisher"
       }
-      """;
+    """;
 
     assertThat(json.parse(content))
       .usingRecursiveComparison()
-      .isEqualTo(Book.of("1234567890", "Book Title", "Book Author", 9.90));
-      // new Book("1234567890", "Book Title", "Book Author", 9.90)
-  }
-  
+      .isEqualTo(Book.of("1234567890", "Book Title", "Book Author", 9.90, "publisher"));
+  }  
 }

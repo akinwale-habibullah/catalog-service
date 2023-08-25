@@ -43,6 +43,7 @@ public class BookService {
           existingBook.get().isbn(),
           book.title(),
           book.author(),
+          book.publisher(),
           book.price(),
           existingBook.get().version()
       );

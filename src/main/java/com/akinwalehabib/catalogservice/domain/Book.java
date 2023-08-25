@@ -36,6 +36,8 @@ public record Book (
   @NotBlank(message = "The book author must be defined.")
   String author,
 
+  String publisher,
+
   @NotNull(message = "The book price must be defined.")
   @Positive(
     message = "The book price must be greater than zero."
@@ -49,9 +51,10 @@ public record Book (
     String isbn,
     String title,
     String author,
-    Double price
+    Double price,
+    String publisher
   ) {
-    return new Book(null, null, null, isbn, title, author, price, 0);
+    return new Book(null, null, null, isbn, title, author, publisher, price, 0);
   }
 }
   
