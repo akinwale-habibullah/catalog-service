@@ -2,6 +2,7 @@ polar:
   greeting: Welcome to the local book catalog!
 server:
   port: 9001
+  shutdown: graceful
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
@@ -11,8 +12,8 @@ server:
 spring:
   application:
     name: catalog-service
-  config:
-    import: "optional:configserver:"
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   datasource:
     username: user
     password: password
@@ -20,6 +21,8 @@ spring:
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
+  config:
+    import: "optional:configserver:"
   cloud:
     config:
       uri: http://localhost:8888
