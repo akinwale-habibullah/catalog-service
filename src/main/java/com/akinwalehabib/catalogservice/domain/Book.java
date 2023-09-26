@@ -7,8 +7,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 
@@ -16,6 +18,12 @@ public record Book (
 
   @Id
   Long id,
+
+  @CreatedBy
+  String createdBy,
+
+  @LastModifiedBy
+  String lastModifiedBy,
 
   @CreatedDate
   Instant createdDate,
@@ -54,7 +62,7 @@ public record Book (
     Double price,
     String publisher
   ) {
-    return new Book(null, null, null, isbn, title, author, publisher, price, 0);
+    return new Book(null, null, null, null, null, isbn, title, author, publisher, price, 0);
   }
 }
   

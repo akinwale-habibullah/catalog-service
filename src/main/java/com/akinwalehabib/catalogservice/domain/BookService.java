@@ -38,6 +38,8 @@ public class BookService {
     if (existingBook.isPresent()) {
       var bookToUpdate = new Book(
           existingBook.get().id(),
+          existingBook.get().createdBy(),
+          existingBook.get().lastModifiedBy(),
           existingBook.get().createdDate(),
           existingBook.get().lastModifiedDate(),
           existingBook.get().isbn(),
