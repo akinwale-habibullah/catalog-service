@@ -9,6 +9,7 @@ server:
     threads:
       max: 50
       min-spare: 5
+
 spring:
   security:
     oauth2:
@@ -39,8 +40,15 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         multiplier: 1.1
+
 management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: refresh,health
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
