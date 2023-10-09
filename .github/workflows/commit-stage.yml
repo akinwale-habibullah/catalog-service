@@ -43,6 +43,14 @@ jobs:
         with:
           kubectl: latest
           kubeval: latest
+      - name: 'Kustomize Build'
+        uses: karancode/kustomize-github-action@master
+        with:
+          kustomize_version: '3.0.0'
+          kustomize_build_dir: '.'
+          kustomize_comment: true
+          kustomize_build_options: "--load_restrictor none"
+          enable_alpha_plugins: true
       - name: Validate Kubernetes manifests
         run: |
             kustomize build k8s | kubeval --strict -d k8s
