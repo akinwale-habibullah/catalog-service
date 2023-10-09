@@ -38,19 +38,12 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
-      - name: Set up Kubetools
+      - name: Set up Kubetools and kustomize
         uses: alexellis/arkade-get@master
         with:
           kubectl: latest
           kubeval: latest
-      - name: 'Kustomize Build'
-        uses: karancode/kustomize-github-action@master
-        with:
-          kustomize_version: '3.0.0'
-          kustomize_build_dir: '.'
-          kustomize_comment: true
-          kustomize_build_options: "--load_restrictor none"
-          enable_alpha_plugins: true
+          kustomize: latest
       - name: Validate Kubernetes manifests
         run: |
             kustomize build k8s | kubeval --strict -d k8s
