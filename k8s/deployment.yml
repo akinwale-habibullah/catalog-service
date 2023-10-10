@@ -22,13 +22,6 @@ spec:
         - name: catalog-service
           image: catalog-service
           imagePullPolicy: IfNotPresent
-          resources:
-            requests:
-              cpu: 300m
-              memory: 240Mi
-            limits:
-              cpu: 500m
-              memory: 480Mi
           lifecycle:
             preStop:
               exec:
