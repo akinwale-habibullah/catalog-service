@@ -36,10 +36,10 @@ spring:
       connection-timeout: 2000
       maximum-pool-size: 5
   config:
-    import: "optional:configserver:"
+    import: ""
   cloud:
     config:
-      enabled: true
+      enabled: false
       uri: http://localhost:8888
       request-connect-timeout: 5000
       request-read-timeout: 5000
