@@ -4,7 +4,7 @@ on: push
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: akinwale-habibullah/catalog-service
-  VERSION: {{ github.sha }}
+  VERSION: ${{ github.sha }}
 
 jobs:
   build:
