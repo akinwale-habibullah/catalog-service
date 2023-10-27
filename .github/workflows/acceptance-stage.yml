@@ -10,7 +10,7 @@ env:
     OWNER: akinwale-habibullah
     REGISTRY: ghcr.io
     APP_REPO: catalog-service
-    DEPLOY-REPO: polar-deployment
+    DEPLOY_REPO: polar-deployment
     VERSION: ${{ github.sha }}
 
 jobs:
